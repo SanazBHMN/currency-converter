@@ -1,4 +1,8 @@
 import { useState } from "react";
+// import components
+import FormHeader from "./FormHeader";
+import FormInput from "./FormInput";
+import FormSelectInput from "./FormSelectInput";
 import FormFooter from "./FormFooter";
 
 const IRR_TO_USD = 0.000024; // 1 IRR = 0.000024 USD
@@ -36,48 +40,45 @@ function Form() {
 
   return (
     <div>
-      <h1>Currency Converter</h1>
-      <div>
-        <label htmlFor="fromCurrency">From</label>
-        <select
-          name="fromCurrency"
-          id="fromCurrency"
-          value={fromCurrency}
-          onChange={(e) => handleFromCurrencyChange(e.target.value)}
-        >
-          <option value="IRR">Iranian Rial (IRR)</option>
-          <option value="USD">US Dollar</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="toCurrency">To</label>
-        <select
-          name="toCurrency"
-          id="toCurrency"
-          value={toCurrency}
-          onChange={(e) => handleToCurrencyChange(e.target.value)}
-        >
-          <option value="USD">US Dollar</option>
-          <option value="IRR">Iranian Rial (IRR)</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="amount">Amount</label>
-        <input
-          type="number"
-          name="amount"
-          id="amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-      </div>
+      <FormHeader />
+      <FormSelectInput
+        label="From"
+        id="fromCurrency"
+        selectValue={fromCurrency}
+        onChange={(e) => handleFromCurrencyChange(e.target.value)}
+        options={[
+          { optionInnerText: "Iranian Rial (IRR)", optionValue: "IRR" },
+          { optionInnerText: "US Dollar", optionValue: "USD" },
+        ]}
+      />
+      <FormSelectInput
+        label="To"
+        id="toCurrency"
+        selectValue={toCurrency}
+        onChange={(e) => handleToCurrencyChange(e.target.value)}
+        options={[
+          { optionInnerText: "US Dollar", optionValue: "USD" },
+          { optionInnerText: "Iranian Rial (IRR)", optionValue: "IRR" },
+        ]}
+      />
+      <FormInput
+        label="Amount"
+        id="amount"
+        type="number"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+        placeHolder="Enter a numeric value"
+      />
       <div>
         <button onClick={calculateResult}>Convert</button>
       </div>
-      <div>
-        <label htmlFor="result">Result</label>
-        <input type="text" id="result" disabled value={result} />
-      </div>
+      <FormInput
+        label="Result"
+        id="result"
+        type="text"
+        value={result}
+        disabled={true}
+      />
       <FormFooter />
     </div>
   );
