@@ -4,6 +4,7 @@ import FormHeader from "./FormHeader";
 import FormInput from "./FormInput";
 import FormSelectInput from "./FormSelectInput";
 import FormFooter from "./FormFooter";
+import FormButton from "./FormButton";
 
 const IRR_TO_USD = 0.000024; // 1 IRR = 0.000024 USD
 const USD_TO_IRR = 1 / IRR_TO_USD; // 1 USD = 41666.67 IRR
@@ -69,9 +70,7 @@ function Form() {
         onChange={(e) => setAmount(e.target.value)}
         placeHolder="Enter a numeric value"
       />
-      <div>
-        <button onClick={calculateResult}>Convert</button>
-      </div>
+      <FormButton buttonInnerText="Convert" onClick={calculateResult} />
       <FormInput
         label="Result"
         id="result"

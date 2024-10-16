@@ -8,7 +8,7 @@ function FormInput({
   disabled,
 }) {
   return (
-    <div>
+    <div className="form-input">
       <label htmlFor={id}>{label}</label>
       <input
         type={type}

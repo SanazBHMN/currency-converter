@@ -3,9 +3,9 @@ import Form from "./components/Form";
 
 function App() {
   return (
-    <>
+    <div className="form-container">
       <Form />
-    </>
+    </div>
   );
 }
 
